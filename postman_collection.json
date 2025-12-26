@@ -1,0 +1,114 @@
+{
+  "info": {
+    "name": "FastAPI Connections API",
+    "description": "Collection for testing all endpoints in the FastAPI Connections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check - DB",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health/db",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health", "db"]
+        }
+      }
+    },
+    {
+      "name": "Send Connection Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sender_id\": 1,\n  \"sender_role\": \"FOUNDER\",\n  \"receiver_id\": 2,\n  \"receiver_role\": \"INVESTOR\",\n  \"message\": \"Hello, I'd like to connect.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/connections/request",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "connections", "request"]
+        }
+      }
+    },
+    {
+      "name": "Get Incoming Connection Requests",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/connections/requests/incoming?user_id=2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000", 
+          "path": ["api", "connections", "requests", "incoming"],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Accept Connection Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/connections/requests/1/accept",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "connections", "requests", "1", "accept"]
+        }
+      }
+    },
+    {
+      "name": "Reject Connection Request",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/connections/requests/1/reject",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "connections", "requests", "1", "reject"]
+        }
+      }
+    },
+    {
+      "name": "Get Connections",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/api/connections?user_id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "connections"],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
